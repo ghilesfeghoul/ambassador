@@ -33,16 +33,27 @@ Then move to the ambassador directory and install all dependencies
 
 After that, create .env file
 
-    mv .env.example .env
+    cp .env.example .env
 
 Make sure you have a Stripe account as a development mode and copy the secret to .env in a STRIPE_SECRET variable. 
 
 Add also CHECKOUT_URL variable needed for the checkout side of the API. This variable is in the fact, the Frontend url, but by default, it can be set to your backend url while we have no frontend for now. 
 
+Make sure you add the right variables for mailing and db services
+
     #.env file
     ...
+    DB_CONNECTION=mysql
+    DB_HOST=db
+    DB_PORT=3306
+    DB_DATABASE=ambassador
+    DB_USERNAME=root
+    DB_PASSWORD=root
+    MAIL_HOST=ambassador_mailhog
+    MAIL_PORT=1025
     STRIPE_SECRET=<YOUR_STRIPE_SECRET_VARIABLE>
     CHECKOUT_URL=<FRONTEND_APP_URL>
+    
 
 After that, start all docker containers
 
