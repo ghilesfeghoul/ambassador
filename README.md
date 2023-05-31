@@ -7,56 +7,49 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+## Laravel Ambassador
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+This is a laravel project built with a monolithic approach. It contains such of Api endpoints, which use a different concepts, such as events, jwt tokens for authentication, CRUD, laravel commands, seeders, database factories and more. It uses also a set of tools as Stripe for checkout, Mailhog for catching emails locally and Redis for memory cache. 
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+It uses docker containers for local development and can also be deployed with this approach on whatever Cloud platform you want such as Google Cloud Platform, Amazon Web Services or Microsof Azure. For this purpose, some changes are needed to be performed.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## System Requirements
 
-## Learning Laravel
+- PHP >= 7.4
+- Composer
+- Docker
+- Git
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Installation guide
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+First, clone this repo with this command
+    
+    git clone https://github.com/ghilesfeghoul/ambassador.git
 
-## Laravel Sponsors
+Then move to the ambassador directory and install all dependencies
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+    cd ambassador
+    composer install
 
-### Premium Partners
+After that, create .env file
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/)**
-- **[OP.GG](https://op.gg)**
+    mv .env.example .env
 
-## Contributing
+Make sure you have a Stripe account as a development mode and copy the secret to .env in a STRIPE_SECRET variable. 
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Add also CHECKOUT_URL variable needed for the checkout side of the API. This variable is in the fact, the Frontend url, but by default, it can be set to your backend url while we have no frontend for now. 
 
-## Code of Conduct
+    #.env file
+    ...
+    STRIPE_SECRET=<YOUR_STRIPE_SECRET_VARIABLE>
+    CHECKOUT_URL=<FRONTEND_APP_URL>
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+After that, start all docker containers
 
-## Security Vulnerabilities
+    docker-compose up --build
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Then go to http://localhost:8000 and you will see all things run correctly.
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This project is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
