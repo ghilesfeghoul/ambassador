@@ -48,7 +48,20 @@ After that, start all docker containers
 
     docker-compose up --build
 
-Then go to http://localhost:8000 and you will see all things run correctly.
+Then, connect to the backend container and run these commands
+
+    php artisan key:generate
+    php artisan migrate
+    php artisan db:seed
+
+If you want to see if everything is running OK, you can retrieve some products record from database by executing this command inside docker container
+
+    php artisan Tinker
+    Product::all()
+
+Then go to http://localhost:8000. You will see all things run correctly.
+
+
 
 ## License
 
