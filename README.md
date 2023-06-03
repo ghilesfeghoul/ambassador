@@ -7,7 +7,7 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## Laravel Ambassador
+## E-Commerce Referral App
 
 This is a laravel project built with a monolithic approach. It contains such of Api endpoints, which use a different concepts, such as events, jwt tokens for authentication, CRUD, laravel commands, seeders, database factories and more. It uses also a set of tools as Stripe for checkout, Mailhog for catching emails locally and Redis for memory cache. 
 
@@ -24,11 +24,11 @@ It uses docker containers for local development and can also be deployed with th
 
 First, clone this repo with this command
     
-    git clone https://github.com/ghilesfeghoul/ambassador.git
+    git clone https://github.com/ghilesfeghoul/e-commerce-referral-app.git
 
 Then move to the ambassador directory and install all dependencies
 
-    cd ambassador
+    cd e-commerce-referral-app
     composer install
 
 After that, create .env file
